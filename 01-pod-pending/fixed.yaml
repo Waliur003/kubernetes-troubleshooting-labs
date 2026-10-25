@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: memory-hungry-pod
+
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27
+
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+
+        limits:
+          memory: "256Mi"
+          cpu: "250m"
