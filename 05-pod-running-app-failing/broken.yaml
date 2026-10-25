@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: running-but-broken-pod
+
+spec:
+  containers:
+    - name: web
+      image: python:3.12-slim
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          mkdir -p /app
+          echo "Hello from Kubernetes" > /app/index.html
+          cd /app
+          python -m http.server 8081
+
+      ports:
+        - containerPort: 8080
